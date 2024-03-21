@@ -8,14 +8,15 @@ class BoxExtractor:
         self.image_path = image_path
     
     def run(self, start=0, end=None):
-        '''Main class function
+        '''Main class function.
+        \n Return a list with contours of boxes that contain wanted text boxes (cells).
         '''
         self.read_image(self.image_path)
-        self.grayscale(self.image)
+        self.grayscale()
         self.save_process(self.gray, '0_gray')
-        self.threshold_image(self.gray)
+        self.threshold_image()
         self.save_process(self.binary, '1_binary')
-        self.invert_image(self.binary)
+        self.invert_image()
         self.save_process(self.inverted, '2_inverted')
         self.find_horizontal_countours()
         self.save_process(self.with_horizontal_lines, '3_hoizontal')
@@ -28,7 +29,7 @@ class BoxExtractor:
         self.filter_boxes_contours()
         self.draw_rects_on_original(self.image, start, end)
         self.save_process(self.orig_with_rects_only, '7_orig_with_rects_only')
-
+        return self.rects
     
     def show_destroy(self, winName, image):
         '''Show image for debugging
@@ -50,19 +51,19 @@ class BoxExtractor:
         self.image = cv.imread(img)
         assert self.image is not None, "Check file name or path!"
 
-    def grayscale(self, image):
+    def grayscale(self):
         '''Gray-scale a BGR image using cvtColor()
         '''
-        self.gray = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
+        self.gray = cv.cvtColor(self.image, cv.COLOR_BGR2GRAY)
     
-    def threshold_image(self, gray):
+    def threshold_image(self):
         '''Convert a grayscale image into a binary using cv.threshold()'''
-        self.binary = cv.threshold(gray, 120, 255, cv.THRESH_BINARY)[1]
+        self.binary = cv.threshold(self.gray, 120, 255, cv.THRESH_BINARY)[1]
     
-    def invert_image(self, binary):
+    def invert_image(self):
         '''Inverte a binary image using cv.bitwise_not() 
         '''
-        self.inverted = cv.bitwise_not(binary)
+        self.inverted = cv.bitwise_not(self.binary)
     
     def find_horizontal_countours(self):
         '''Finds horizontal lines of tables in the image
@@ -112,7 +113,10 @@ class BoxExtractor:
         (different images shows variable contour results)
         '''
         orig_with_rects_only = image.copy()
-        self.orig_with_rects_only = cv.drawContours(orig_with_rects_only, self.rects[start:end], -1, (255, 0, 0), 2) #*
+        self.rects = self.rects[start:end] #*
+        self.rects.reverse() # Boxes' contours are in reversed order normally
+        self.rects = self.rects[:6], self.rects[7:] # ignore unwanted text box in the middle
+        self.orig_with_rects_only = cv.drawContours(orig_with_rects_only, self.rects, -1, (255, 0, 0), 2)
 
 
 # '''
