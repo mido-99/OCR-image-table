@@ -45,7 +45,7 @@ class BoxExtractor:
         '''
         img_name = f"process_images/box_extractor/{name}.jpg"
         cv.imwrite(img_name, img)
-        self.show_destroy(f'{name}', img)
+        # self.show_destroy(f'{name}', img)
 
     def read_image(self, img):
         self.image = cv.imread(img)
@@ -115,7 +115,7 @@ class BoxExtractor:
         orig_with_rects_only = image.copy()
         self.rects = self.rects[start:end] #*
         self.rects.reverse() # Boxes' contours are in reversed order normally
-        self.rects = self.rects[:6], self.rects[7:] # ignore unwanted text box in the middle
+        self.rects = self.rects[:6] + self.rects[7:] # ignore unwanted text box in the middle
         self.orig_with_rects_only = cv.drawContours(orig_with_rects_only, self.rects, -1, (255, 0, 0), 2)
 
 

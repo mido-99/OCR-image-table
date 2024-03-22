@@ -1,4 +1,5 @@
 import cv2 as cv
+import numpy as np
 import subprocess
 
 
@@ -34,7 +35,25 @@ class OcrBoxes:
         for box_number, contour in enumerate(self.rects_contours):
             x, y, w, h = cv.boundingRect(contour)
             cropped = self.image[y-5:y+h , x-5:x+w]
+            # cropped = self.remove_noise(cropped)
+            #! Need to process iamge first! Construct a base class with base methods (gary, ...)
             crop_name = f"{ocr_images_path}/{str(box_number)}_ocr.jpg"
             cv.imwrite(crop_name, cropped)
             self.show_destroy(f'{crop_name}', cropped)
     
+    def remove_noise(self, image):
+        '''
+        '''
+        kernel = cv.getStructuringElement(cv.MORPH_RECT, (2, 2))
+        image = cv.erode(image, kernel, iterations=1)
+        self.show_destroy('eroded', image)
+        image = cv.dilate(image, kernel, iterations=2)
+        self.show_destroy('dilated', image)
+        return image
+    
+    def save_process(self, img, name):
+        '''Save given image with name to "process_images/box_extractor/"
+        '''
+        img_name = f"{ocr_images_path}/{name}.jpg"
+        cv.imwrite(img_name, img)
+        self.show_destroy(f'{name}', img)
