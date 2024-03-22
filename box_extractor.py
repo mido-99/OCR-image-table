@@ -1,22 +1,19 @@
 import cv2 as cv
 import numpy as np
+from base import Base
 
-
-class BoxExtractor:
-    
-    def __init__(self, image_path):
-        self.image_path = image_path
+class BoxExtractor(Base):
     
     def run(self, start=0, end=None):
         '''Main class function.
         \n Return a list with contours of boxes that contain wanted text boxes (cells).
         '''
         self.read_image(self.image_path)
-        self.grayscale()
+        self.gray = self.grayscale(self.image)
         self.save_process(self.gray, '0_gray')
-        self.threshold_image()
+        self.binary = self.threshold_image(self.gray)
         self.save_process(self.binary, '1_binary')
-        self.invert_image()
+        self.inverted = self.invert_image(self.binary)
         self.save_process(self.inverted, '2_inverted')
         self.find_horizontal_countours()
         self.save_process(self.with_horizontal_lines, '3_hoizontal')
@@ -47,24 +44,6 @@ class BoxExtractor:
         cv.imwrite(img_name, img)
         # self.show_destroy(f'{name}', img)
 
-    def read_image(self, img):
-        self.image = cv.imread(img)
-        assert self.image is not None, "Check file name or path!"
-
-    def grayscale(self):
-        '''Gray-scale a BGR image using cvtColor()
-        '''
-        self.gray = cv.cvtColor(self.image, cv.COLOR_BGR2GRAY)
-    
-    def threshold_image(self):
-        '''Convert a grayscale image into a binary using cv.threshold()'''
-        self.binary = cv.threshold(self.gray, 120, 255, cv.THRESH_BINARY)[1]
-    
-    def invert_image(self):
-        '''Inverte a binary image using cv.bitwise_not() 
-        '''
-        self.inverted = cv.bitwise_not(self.binary)
-    
     def find_horizontal_countours(self):
         '''Finds horizontal lines of tables in the image
         '''
@@ -93,7 +72,7 @@ class BoxExtractor:
     def find_contours(self):
         '''Find & draw contours
         '''
-        self.contours, hierachy = cv.findContours(self.combined_dilated, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
+        self.contours, hierarchy = cv.findContours(self.combined_dilated, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
         self.original_with_all_contourrs = self.image.copy()
         self.original_with_all_contourrs = cv.drawContours(self.original_with_all_contourrs, self.contours, -1, (255, 0, 0), 2)
 

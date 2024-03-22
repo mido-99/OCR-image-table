@@ -1,0 +1,66 @@
+read_params_file: Can't open code
+read_params_file: Can't open Projects\Python\Full-Projects\OCR-image-table\process_images\ocr_slices\0_ocr.jpg
+read_params_file: Can't open -
+read_params_file: Can't open -l
+read_params_file: Can't open eng
+Error, could not create TXT output file: No such file or directory
+read_params_file: Can't open code
+read_params_file: Can't open Projects\Python\Full-Projects\OCR-image-table\process_images\ocr_slices\10_ocr.jpg
+read_params_file: Can't open -
+read_params_file: Can't open -l
+read_params_file: Can't open eng
+Error, could not create TXT output file: No such file or directory
+read_params_file: Can't open code
+read_params_file: Can't open Projects\Python\Full-Projects\OCR-image-table\process_images\ocr_slices\1_ocr.jpg
+read_params_file: Can't open -
+read_params_file: Can't open -l
+read_params_file: Can't open eng
+Error, could not create TXT output file: No such file or directory
+read_params_file: Can't open code
+read_params_file: Can't open Projects\Python\Full-Projects\OCR-image-table\process_images\ocr_slices\2_ocr.jpg
+read_params_file: Can't open -
+read_params_file: Can't open -l
+read_params_file: Can't open eng
+Error, could not create TXT output file: No such file or directory
+read_params_file: Can't open code
+read_params_file: Can't open Projects\Python\Full-Projects\OCR-image-table\process_images\ocr_slices\3_ocr.jpg
+read_params_file: Can't open -
+read_params_file: Can't open -l
+read_params_file: Can't open eng
+Error, could not create TXT output file: No such file or directory
+read_params_file: Can't open code
+read_params_file: Can't open Projects\Python\Full-Projects\OCR-image-table\process_images\ocr_slices\4_ocr.jpg
+read_params_file: Can't open -
+read_params_file: Can't open -l
+read_params_file: Can't open eng
+Error, could not create TXT output file: No such file or directory
+read_params_file: Can't open code
+read_params_file: Can't open Projects\Python\Full-Projects\OCR-image-table\process_images\ocr_slices\5_ocr.jpg
+read_params_file: Can't open -
+read_params_file: Can't open -l
+read_params_file: Can't open eng
+Error, could not create TXT output file: No such file or directory
+read_params_file: Can't open code
+read_params_file: Can't open Projects\Python\Full-Projects\OCR-image-table\process_images\ocr_slices\6_ocr.jpg
+read_params_file: Can't open -
+read_params_file: Can't open -l
+read_params_file: Can't open eng
+Error, could not create TXT output file: No such file or directory
+read_params_file: Can't open code
+read_params_file: Can't open Projects\Python\Full-Projects\OCR-image-table\process_images\ocr_slices\7_ocr.jpg
+read_params_file: Can't open -
+read_params_file: Can't open -l
+read_params_file: Can't open eng
+Error, could not create TXT output file: No such file or directory
+read_params_file: Can't open code
+read_params_file: Can't open Projects\Python\Full-Projects\OCR-image-table\process_images\ocr_slices\8_ocr.jpg
+read_params_file: Can't open -
+read_params_file: Can't open -l
+read_params_file: Can't open eng
+Error, could not create TXT output file: No such file or directory
+read_params_file: Can't open code
+read_params_file: Can't open Projects\Python\Full-Projects\OCR-image-table\process_images\ocr_slices\9_ocr.jpg
+read_params_file: Can't open -
+read_params_file: Can't open -l
+read_params_file: Can't open eng
+Error, could not create TXT output file: No such file or directory
